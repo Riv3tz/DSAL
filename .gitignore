@@ -33,3 +33,5 @@
 *.bin
 *.prob
 *.pyc
+*.txt
+*.cph
