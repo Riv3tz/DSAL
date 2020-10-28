@@ -4,17 +4,13 @@ using namespace std;
 int main() {
     int t; 
     cin >> t;
-    int l, r, size;
-    bool ans = false;
+
+    int x, a;
+
     while (t) {
         t--;
-        cin >> l >> r;
-        for (size = 1; size < l; size++) {
-            if (( l % size ) == 0) {
-                cout << "YES" << endl;
-                ans = true;
-            }
-        
-        }
+        cin >> x >> a;
+        if (x*2 > a) cout << "YES"; else cout << "NO";
+        cout << endl;
     }
 }
