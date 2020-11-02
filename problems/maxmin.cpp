@@ -10,13 +10,11 @@ struct Pair
 	int max;
 }; 
 
-struct getMinMax(int arr[], int n)
+struct Pair getMinMax(int arr[], int n)
 {
 	struct Pair minmax;	 
 	int i;
 	
-	// If there is only one element 
-	// then return it as min and max both
 	if (n == 1)
 	{
 		minmax.max = arr[0];
@@ -24,8 +22,6 @@ struct getMinMax(int arr[], int n)
 		return minmax;
 	} 
 	
-	// If there are more than one elements,
-	// then initialize min and max
 	if (arr[0] > arr[1]) 
 	{
 		minmax.max = arr[0];
@@ -60,6 +56,5 @@ int main()
 		<< minmax.min << endl;
 	cout << "Maximum element is "
 		<< minmax.max;
-		
 	return 0;
 } 
