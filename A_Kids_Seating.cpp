@@ -7,17 +7,8 @@ int main () {
     while (t--) {
         int n;
         cin >> n;
-        int prime = 0;
-        int s = 4*n;
-        for (int i = 3; i <= s; i++) {
-            for (int j = 2; j < sqrt(i); j++) {
-                if ( i % j == 0 ) prime = -1;
-            }
-            if (prime == 0) {
-                cout << i << " ";
-                n--;
-            }
-        if (n == 0) break;
+        for (int i = 1; i <= n; i++) {
+            cout << (4*n) - (2*i) << " ";
         }
         cout << endl;
     }
