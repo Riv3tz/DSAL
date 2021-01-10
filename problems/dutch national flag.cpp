@@ -7,7 +7,7 @@ int main() {
     while(t--) {   
         int n; 
         cin >> n;
-        vector<int> arr;
+        vector<int> arr;    
         int input;
         while(cin >> input) arr.push_back(input);
         int low = 0, mid = 0, high = arr.size() - 1;
