@@ -28,6 +28,7 @@ int main() {
         vector<int> a;
         int input;
         while(cin >> input) a.push_back(input);
+        
         //method 1
         bblsort(a);
         displ(a);

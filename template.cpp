@@ -5,8 +5,7 @@ int main() {
     int t, i;
     cin >> t;
     while(t--) {
-
-        
-
     }
 }
+
+// Author - Rivetz
