@@ -2,28 +2,27 @@
 using namespace std;
 
 int main() {
-    int t, i;
+    int t,i; 
     cin >> t;
     while(t--) {
-        int n;
-        int e;
+        int n, d,f=1;
         cin >> n;
-        int d; 
         cin >> d;
-        vector<int> s;
-        for(i = 0; i < n; i++) {
-            cin >> e;
-            s.push_back(e);
+        vector<int> a;
+        for (i = 0; i < n; i++)
+        {
+            int temp;
+            cin >> temp;
+            if(temp > d) f = 0;
+            a.push_back(temp);
         }
-        sort(s.begin(), s.end());
-
-        if(s[0]<=d && s[1]<=d) {
-            if(s[0]+s[1] <= d || s[n-1] <= d) cout << "Yes";
-            else cout << "No";
+        if(f) {
+            cout << "YES\n";
+            continue;
         }
-
-
-        cout << endl;
+        sort(a.begin(), a.end());
+        if(a[0] + a[1] > d) cout << "NO\n";
+        else cout << "YES\n";
     }
 }
 // Author - Rivetz
