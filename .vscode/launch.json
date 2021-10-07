@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "problems.test",
+            "projectName": "DSAL_d427d376"
+        },
+        {
             "name": "cpp.exe - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
