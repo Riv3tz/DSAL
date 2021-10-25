@@ -7,8 +7,9 @@ package problems;
 public class test {
 
     public static void main(String[] args) {
-        int[] nums = {8,1,2,2,3};
-        nums = (smallerNumbersThanCurrent(nums)); 
+        // int[] nums = {8,1,2,2,3};
+        // nums = (smallerNumbersThanCurrent(nums)); 
+        System.out.println(checkIfPangram("thewuickbrownfoxjumpsoverthelazydog"));
     }
 
     static int[] smallerNumbersThanCurrent(int[] nums) {
@@ -43,4 +44,24 @@ public class test {
         
         return res;
     }
+
+    static boolean checkIfPangram(String sentence) {
+
+        if(sentence.length()>=26) {
+            char ch = 'a';
+            for(int i = 0; i < 26; i++) {
+                // System.out.println(ch);
+                if(sentence.contains(String.valueOf(ch))) {
+                    ch++;
+                    continue;
+                }
+                else return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+
 }
+
