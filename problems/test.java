@@ -10,6 +10,10 @@ public class test {
         // int[] nums = {8,1,2,2,3};
         // nums = (smallerNumbersThanCurrent(nums)); 
         // System.out.println(checkIfPangram("thewuickbrownfoxjumpsoverthelazydog"));
+        int[][] a = { { 1,1,1 }, { 1,0,1 }, {0,0,1} };
+        // System.out.println(lo(a)); 
+        a = lo(a);
+
     }
 
     static int[] smallerNumbersThanCurrent(int[] nums) {
@@ -62,6 +66,17 @@ public class test {
         return false;
     }
 
+    static int[][] lo(int[][] A) {
+        int n = A.length;
+        for (int[] row : A)
+            for (int i = 0; i*2 < n; i++)
+                if (row[i] == row[n - i - 1]) {
+                    row[i] = row[n - i - 1] ^= 1;
+                    System.out.print(row[0]);
+                    System.out.print(row[2]);
+                    System.out.println(row[1]);
+                }
+        return A;
+    }
 
 }
-
