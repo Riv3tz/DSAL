@@ -12,6 +12,7 @@ public class aoc1 {
             if(add==0) break;
             inp.add(add);            
         }
+        sc.close();
         int count = 0;
         for(int i = 1; i < inp.size(); i++) {
             if(inp.get(i) > inp.get(i-1)) count++;
