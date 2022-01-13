@@ -1,6 +1,8 @@
 ## Array
 
-- [x] [Two Sum](https://leetcode.com/problems/two-sum/) 
+- [x] [Two Sum](https://leetcode.com/problems/two-sum/)  
+1. Brute Force O(n<sup>2</sup>) - Check each element with every other. 2 For loops 'i' and 'j'.
+2. Hash Map O(n) - put each value in hashmap and check if target - nums[i] is present. 
 - [ ] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 - [ ] [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
 - [ ] [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
