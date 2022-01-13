@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch xor",
+            "request": "launch",
+            "mainClass": "problems.xor",
+            "projectName": "DSAL_d427d376"
+        },
+        {
+            "type": "java",
             "name": "Launch aoc1",
             "request": "launch",
             "mainClass": "problems.aoc1",

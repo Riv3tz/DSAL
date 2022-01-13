@@ -3,10 +3,41 @@
 - [x] [Two Sum](https://leetcode.com/problems/two-sum/)  
 1. **Brute Force O(n<sup>2</sup>)** - Check each element with every other. 2 For loops 'i' and 'j'.
 2. **Optimal Hash Map O(n)** - put each value in hashmap and check if target - nums[i] is present. 
+```java
+HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                result[1] = i;
+                result[0] = map.get(target - nums[i]);
+                return result;
+            }
+        map.put(nums[i], i);
+        }
+        return result;
+```
 - [x] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 1. **Brute Force O(n<sup>2</sup>)** - Check each element and find max difference.
 2. **Optimal O(n)** - Check each element as you go. Keep track of minimum element. Replace max difference with difference of current and minimum element when max is lesser.
-- [ ] [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+```java
+int max = 0, min = Integer.MAX_VALUE;
+        for(int i : prices) {
+            min = (i < min) ? i : min;
+            max = (i - min > max) ? i - min : max;
+        }
+        return max;
+```
+- [x] [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+1. **Brute Force O(n<sup>2</sup>)** - check for each.
+2. **Sort O(n<sup>2</sup>logn)** - sort and check next.
+3. **HashSet O(n)**
+```java
+HashSet<Integer> set = new HashSet<Integer>();
+        for(int x : nums) {
+            if(set.contains(x)) return true;
+            set.add(x);
+        }
+        return false;
+```
 - [ ] [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 - [ ] [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 - [ ] [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
