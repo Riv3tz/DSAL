@@ -1,4 +1,5 @@
-## Array
+## Arrays
+
 
 - [x] [Two Sum](https://leetcode.com/problems/two-sum/)  
 1. **Brute Force O(n<sup>2</sup>)** - Check each element with every other. 2 For loops 'i' and 'j'.
@@ -15,6 +16,7 @@ HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         }
         return result;
 ```
+---
 - [x] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 1. **Brute Force O(n<sup>2</sup>)** - Check each element and find max difference.
 2. **Optimal O(n)** - Check each element as you go. Keep track of minimum element. Replace max difference with difference of current and minimum element when max is lesser.
@@ -26,6 +28,7 @@ int max = 0, min = Integer.MAX_VALUE;
         }
         return max;
 ```
+---
 - [x] [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
 1. **Brute Force O(n<sup>2</sup>)** - check for each.
 2. **Sort O(n<sup>2</sup>logn)** - sort and check next.
@@ -38,6 +41,7 @@ HashSet<Integer> set = new HashSet<Integer>();
         }
         return false;
 ```
+---
 - [ ] [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 - [ ] [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 - [ ] [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
