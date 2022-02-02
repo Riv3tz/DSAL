@@ -2,8 +2,11 @@
 
 
 - [x] [Two Sum](https://leetcode.com/problems/two-sum/)  
+
 1. **Brute Force O(n<sup>2</sup>)** - Check each element with every other. 2 For loops 'i' and 'j'.
+
 2. **Optimal Hash Map O(n)** - put each value in hashmap and check if target - nums[i] is present. 
+
 ```java
 HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
@@ -16,10 +19,15 @@ HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         }
         return result;
 ```
+
 ---
-- [x] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
+- [ ] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
 1. **Brute Force O(n<sup>2</sup>)** - Check each element and find max difference.
+
 2. **Optimal O(n)** - Check each element as you go. Keep track of minimum element. Replace max difference with difference of current and minimum element when max is lesser.
+
 ```java
 int max = 0, min = Integer.MAX_VALUE;
         for(int i : prices) {
@@ -28,11 +36,17 @@ int max = 0, min = Integer.MAX_VALUE;
         }
         return max;
 ```
+
 ---
+
 - [x] [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+
 1. **Brute Force O(n<sup>2</sup>)** - check for each.
+
 2. **Sort O(n<sup>2</sup>logn)** - sort and check next.
-3. **HashSet O(n)**
+
+3. **HashSet O(n)** - add to hashet and check each
+
 ```java
 HashSet<Integer> set = new HashSet<Integer>();
         for(int x : nums) {
@@ -41,8 +55,71 @@ HashSet<Integer> set = new HashSet<Integer>();
         }
         return false;
 ```
+
 ---
+
 - [ ] [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
+
+1. **Brute Force O(n<sup>2</sup>)** - run loop for each element, omit element and calculate product.
+
+2. **Optimal Extra Space O(n)** - create 2 arrays for left product and right product.\
+Loop left --> for(int i = 1; i < n; i++) {
+            left[i] = nums[i-1] * left[i-1];
+        }\
+This updates left[i] with all product of all elements left of itself excluding itself. Vice Versa for right side.\
+Now we have 2 arrays with elements with left and right products excluding themeselves.\
+Multiply both the arrays to get result.\
+for(int i = 0; i < n; i++) {
+            out[i] = left[i] * right[i];
+            } 
+
+```java
+int n = nums.length;
+        
+        int[] left = new int[n];
+        int[] right = new int[n];
+        int[] out = new int[n];
+
+        //Don't forget to initialize first element with 1 for multiplication
+        left[0] = 1; 
+        right[n-1] = 1;
+
+        for(int i = 1; i < n; i++) {
+            left[i] = nums[i-1] * left[i-1];
+        }
+        
+        for(int i = n-2; i >= 0; i--) {
+            right[i] = nums[i+1] * right[i+1];
+        }
+        
+        
+        for(int i = 0; i < n; i++) {
+            out[i] = left[i] * right[i];    
+        }
+        return out;
+```
+
+3. **Optimal Constant Space O(n)** - Same process as above. Use output array and nums array. Use variable for second loop.
+
+```java
+int n = nums.length;
+        
+        // output array not counted as extra space.
+        int[] out = new int[n];
+        out[0] = 1; // for multiplication.
+        int r = 1;
+        for(int i = 1; i < n; i++) {
+            out[i] = nums[i-1] * out[i-1];
+        }
+        for(int i = n-1; i >= 0; i--) {
+            out[i] = out[i] * r;
+            r = r * nums[i];
+        }
+        return out;
+```
+
+---
+
 - [ ] [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 - [ ] [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
 - [ ] [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
