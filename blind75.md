@@ -121,6 +121,25 @@ int n = nums.length;
 ---
 
 - [ ] [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+1. **Brute force O(n<sup>2</sup>)** - Check each subarray
+
+2. **Optimal O(n)** - Kadane's Algo
+
+```java
+int sum = 0, max = Integer.MIN_VALUE;
+        for(int i : nums) {
+            sum += i;
+            if(sum > max) {
+                max = sum;
+            }
+            if(sum < 0) sum = 0;
+        }
+        return max;
+```
+
+---
+
 - [ ] [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
 - [ ] [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 - [ ] [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
