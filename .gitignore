@@ -35,3 +35,6 @@
 *.pyc
 *.txt
 *.cph
+
+# Misc
+*.mp3
