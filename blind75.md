@@ -19,7 +19,15 @@ HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         }
         return result;
 ```
-
+```python
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in seen:
+                return [seen[diff], i]
+            seen[n] = i
+```
 ---
 
 - [ ] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
@@ -36,7 +44,14 @@ int max = 0, min = Integer.MAX_VALUE;
         }
         return max;
 ```
-
+```python
+def maxProfit(self, prices: List[int]) -> int:
+        max, min = 0, 10**4 + 1
+        for price in prices:
+            min = price if price < min else min
+            max = price - min if (price - min) > max else max
+        return max
+```
 ---
 
 - [x] [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
@@ -55,7 +70,17 @@ HashSet<Integer> set = new HashSet<Integer>();
         }
         return false;
 ```
-
+```python
+def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = {}
+        for num in nums:
+            if num in seen:
+                return True
+            else:
+                seen[num] = num
+        else:
+            return False
+```
 ---
 
 - [ ] [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
