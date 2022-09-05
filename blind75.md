@@ -1,23 +1,15 @@
 ## Arrays
-
-
 - [x] [Two Sum](https://leetcode.com/problems/two-sum/)  
-
 1. **Brute Force O(n<sup>2</sup>)** - Check each element with every other. 2 For loops 'i' and 'j'.
-
 2. **Optimal Hash Map O(n)** - put each value in hashmap and check if target - nums[i] is present. 
-
-```java
-HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(target - nums[i])) {
-                result[1] = i;
-                result[0] = map.get(target - nums[i]);
-                return result;
-            }
-        map.put(nums[i], i);
-        }
-        return result;
+```python
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in seen:
+                return [seen[diff], i]
+            seen[n] = i
 ```
 ```python
 def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -29,20 +21,16 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
             seen[n] = i
 ```
 ---
-
 - [ ] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-
 1. **Brute Force O(n<sup>2</sup>)** - Check each element and find max difference.
-
 2. **Optimal O(n)** - Check each element as you go. Keep track of minimum element. Replace max difference with difference of current and minimum element when max is lesser.
-
-```java
-int max = 0, min = Integer.MAX_VALUE;
-        for(int i : prices) {
-            min = (i < min) ? i : min;
-            max = (i - min > max) ? i - min : max;
-        }
-        return max;
+```python
+def maxProfit(self, prices: List[int]) -> int:
+        max, min = 0, 10**4 + 1
+        for price in prices:
+            min = price if price < min else min
+            max = price - min if (price - min) > max else max
+        return max
 ```
 ```python
 def maxProfit(self, prices: List[int]) -> int:
@@ -53,22 +41,20 @@ def maxProfit(self, prices: List[int]) -> int:
         return max
 ```
 ---
-
 - [x] [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
-
 1. **Brute Force O(n<sup>2</sup>)** - check for each.
-
 2. **Sort O(n<sup>2</sup>logn)** - sort and check next.
-
 3. **HashSet O(n)** - add to hashet and check each
-
-```java
-HashSet<Integer> set = new HashSet<Integer>();
-        for(int x : nums) {
-            if(set.contains(x)) return true;
-            set.add(x);
-        }
-        return false;
+```python
+def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = {}
+        for num in nums:
+            if num in seen:
+                return True
+            else:
+                seen[num] = num
+        else:
+            return False
 ```
 ```python
 def containsDuplicate(self, nums: List[int]) -> bool:
@@ -82,11 +68,8 @@ def containsDuplicate(self, nums: List[int]) -> bool:
             return False
 ```
 ---
-
 - [ ] [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
-
 1. **Brute Force O(n<sup>2</sup>)** - run loop for each element, omit element and calculate product.
-
 2. **Optimal Extra Space O(n)** - create 2 arrays for left product and right product.\
 Loop left --> for(int i = 1; i < n; i++) {
             left[i] = nums[i-1] * left[i-1];
@@ -96,75 +79,33 @@ Now we have 2 arrays with elements with left and right products excluding themes
 Multiply both the arrays to get result.\
 for(int i = 0; i < n; i++) {
             out[i] = left[i] * right[i];
-            } 
-
-```java
-int n = nums.length;
-        
-        int[] left = new int[n];
-        int[] right = new int[n];
-        int[] out = new int[n];
-
-        //Don't forget to initialize first element with 1 for multiplication
-        left[0] = 1; 
-        right[n-1] = 1;
-
-        for(int i = 1; i < n; i++) {
-            left[i] = nums[i-1] * left[i-1];
-        }
-        
-        for(int i = n-2; i >= 0; i--) {
-            right[i] = nums[i+1] * right[i+1];
-        }
-        
-        
-        for(int i = 0; i < n; i++) {
-            out[i] = left[i] * right[i];    
-        }
-        return out;
-```
-
-3. **Optimal Constant Space O(n)** - Same process as above. Use output array and nums array. Use variable for second loop.
-
-```java
-int n = nums.length;
-        
-        // output array not counted as extra space.
-        int[] out = new int[n];
-        out[0] = 1; // for multiplication.
-        int r = 1;
-        for(int i = 1; i < n; i++) {
-            out[i] = nums[i-1] * out[i-1];
-        }
-        for(int i = n-1; i >= 0; i--) {
-            out[i] = out[i] * r;
-            r = r * nums[i];
-        }
-        return out;
-```
-
----
-
-- [ ] [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
-
-1. **Brute force O(n<sup>2</sup>)** - Check each subarray
-
-2. **Optimal O(n)** - Kadane's Algo
-
-```java
-int sum = 0, max = Integer.MIN_VALUE;
-        for(int i : nums) {
-            sum += i;
-            if(sum > max) {
-                max = sum;
             }
-            if(sum < 0) sum = 0;
-        }
-        return max;
+3. **Optimal Constant Space O(n)** - Same process as above, use prefix and postfix variables instead of arrays. 
+```python
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        answer = [1] * len(nums)
+        acc = 1 # accumulated
+        for i in range(len(nums)):
+            answer[i] = acc
+            acc *= nums[i]
+        acc = 1
+        for i in range(len(nums)-1, -1, -1):
+            answer[i] *= acc
+            acc *= nums[i]
+        return answer
 ```
-
 ---
-
+- [ ] [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+1. **Brute force O(n<sup>2</sup>)** - Check each subarray
+2. **Optimal O(n)** - Kadane's Algo
+```python
+    cur_max, max_till_now = 0, -inf
+    for c in nums:
+        cur_max = max(c, cur_max + c)
+        max_till_now = max(max_till_now, cur_max)
+    return max_till_now
+```
+---
 - [ ] [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
 - [ ] [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 - [ ] [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
