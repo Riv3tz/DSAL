@@ -11,10 +11,27 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
                 return [seen[diff], i]
             seen[n] = i
 ```
+```python
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in seen:
+                return [seen[diff], i]
+            seen[n] = i
+```
 ---
 - [ ] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 1. **Brute Force O(n<sup>2</sup>)** - Check each element and find max difference.
 2. **Optimal O(n)** - Check each element as you go. Keep track of minimum element. Replace max difference with difference of current and minimum element when max is lesser.
+```python
+def maxProfit(self, prices: List[int]) -> int:
+        max, min = 0, 10**4 + 1
+        for price in prices:
+            min = price if price < min else min
+            max = price - min if (price - min) > max else max
+        return max
+```
 ```python
 def maxProfit(self, prices: List[int]) -> int:
         max, min = 0, 10**4 + 1
@@ -28,6 +45,17 @@ def maxProfit(self, prices: List[int]) -> int:
 1. **Brute Force O(n<sup>2</sup>)** - check for each.
 2. **Sort O(n<sup>2</sup>logn)** - sort and check next.
 3. **HashSet O(n)** - add to hashet and check each
+```python
+def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = {}
+        for num in nums:
+            if num in seen:
+                return True
+            else:
+                seen[num] = num
+        else:
+            return False
+```
 ```python
 def containsDuplicate(self, nums: List[int]) -> bool:
         seen = {}
